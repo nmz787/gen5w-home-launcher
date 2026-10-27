@@ -1,0 +1,7 @@
+{
+  "source": "examples/configurable/assets/ambient_party_mode.sh",
+  "source_sha256": "4fae90ca51e86e234ac166bd6d0d594d02803edde0490da9f7a62a17426868b5",
+  "result_sha256": "4fae90ca51e86e234ac166bd6d0d594d02803edde0490da9f7a62a17426868b5",
+  "previous_proof_of_concept_sha256": "aac259e500061022f040ee0527ea9261687481c43346af3160dbd4254e67257d",
+  "change": "Updated source script with managed background controls, PID/birth identity, TERM cleanup, persistent state directory, and per-cycle log truncation. Bundled copy is byte-identical to updated source."
+}

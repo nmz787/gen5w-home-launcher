@@ -1,0 +1,12 @@
+[
+  {
+    "path": "../gen5w-audio-shortcuts/tools/headunit-audio-adb.py",
+    "sha256": "e89d4c1b897f95b202cc081f38c19b614f7ae7b56295591251b657bd743e663c",
+    "use": "ADB transport and guarded device file operations imported by launcher tools."
+  },
+  {
+    "path": "../gen5w-audio-shortcuts/tools/artifact_cache.py",
+    "sha256": "1bc3dbb73189d75151d8a3a77575cc95202e0ca592c0ef753409faba4c05d565",
+    "use": "Runtime identity and cache-key helpers imported by the physical launcher ODEX compiler."
+  }
+]

@@ -1,0 +1,23 @@
+# Keep firmware, machine-specific build outputs and emulator images out of Git.
+__pycache__/
+*.py[cod]
+**/original/*.apk
+**/original/*.odex
+**/framework/*.odex
+**/build/
+**/*.dex
+**/*.odex
+**/*.apk
+**/*.ppm
+**/backup.tar
+**/backup.json
+backups/
+reports/
+checkpoints/
+# Older fixed-tile demonstration tooling retained locally, outside this repo.
+tools/DeodexApk.java
+tools/VerifyCompiledLauncher.java
+tools/VerifyLauncherPatch.java
+tools/build_preconditioning.py
+tools/test_build_preconditioning.py
+tools/verify_compiled.py

@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "theme": "auto",
+  "tiles": [
+    {
+      "id": "preconditioning",
+      "display_name": "Preconditioning",
+      "icon_day": "icons/preconditioning-day.png",
+      "icon_night": "icons/preconditioning-night.png",
+      "action": {
+        "type": "activity",
+        "component": "com.paytondev.launchpad/.MainActivity"
+      }
+    },
+    {
+      "id": "ambient_party_mode",
+      "display_name": "Ambient Party Mode",
+      "icon_day": "icons/ambient-party-day.png",
+      "icon_night": "icons/ambient-party-night.png",
+      "action": {
+        "type": "exec",
+        "argv": [
+          "/system/bin/sh",
+          "/data/local/tmp/ambient_party_mode.sh",
+          "--toggle",
+          "--state-dir",
+          "/data/data/com.android.launcher3/files/ambient-party-mode",
+          "--loop",
+          "--random"
+        ],
+        "toggle": false
+      }
+    }
+  ]
+}
