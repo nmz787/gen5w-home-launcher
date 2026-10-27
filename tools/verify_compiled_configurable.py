@@ -7,9 +7,9 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--backup-dir',required=True,type=Path)
 p.add_argument('--build-dir',required=True,type=Path)
 p.add_argument('--java-home',required=True,type=Path)
-p.add_argument('--ghidra-home',required=True,type=Path)
+p.add_argument('--dexlib-libs',required=True,type=Path)
 a=p.parse_args();root=Path(__file__).resolve().parents[1];b=a.build_dir.resolve();fw=a.backup_dir.resolve()/'system/framework'
-cp=':'.join(str(p) for p in sorted(a.ghidra_home.resolve().rglob('*.jar')))
+cp=':'.join(str(p) for p in sorted(a.dexlib_libs.resolve().rglob('*.jar')))
 java=a.java_home.resolve()/'bin/java'
 def run(source,args,log):
  with (b/log).open('w') as out:

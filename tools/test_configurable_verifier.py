@@ -20,7 +20,7 @@ def main():
     parser.add_argument('--build-dir', type=Path, required=True)
     parser.add_argument('--framework-dir', type=Path, required=True)
     parser.add_argument('--java-home', type=Path, required=True)
-    parser.add_argument('--ghidra-home', type=Path, required=True)
+    parser.add_argument('--dexlib-libs', type=Path, required=True)
     parser.add_argument('--out', type=Path)
     args = parser.parse_args()
     build = args.build_dir.resolve()
@@ -30,7 +30,7 @@ def main():
     if out.exists() and any(out.iterdir()):
         raise RuntimeError('Test output directory must be fresh or empty')
     out.mkdir(parents=True, exist_ok=True)
-    jars = sorted(args.ghidra_home.resolve().rglob('*.jar'))
+    jars = sorted(args.dexlib_libs.resolve().rglob('*.jar'))
     cp = os.pathsep.join(map(str, jars))
     classes = out / 'java-classes'
     classes.mkdir()

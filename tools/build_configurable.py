@@ -68,7 +68,8 @@ def main():
     parser.add_argument('--out', required=True, type=Path)
     parser.add_argument('--java-home', type=Path, default=os.environ.get('JAVA_HOME'))
     parser.add_argument('--android-sdk', type=Path, default=os.environ.get('ANDROID_HOME') or os.environ.get('ANDROID_SDK_ROOT'))
-    parser.add_argument('--ghidra-home', required=True, type=Path)
+    parser.add_argument('--dexlib-libs', required=True, type=Path,
+                        help='Directory containing dexlib2/baksmali Java dependency JARs')
     parser.add_argument('--build-tools-version', default='36.0.0')
     args = parser.parse_args()
     if not args.java_home or not args.android_sdk:
@@ -85,9 +86,9 @@ def main():
     sdk = args.android_sdk.resolve()
     android = sdk / 'platforms/android-19/android.jar'
     bt = sdk / 'build-tools' / args.build_tools_version
-    jars = sorted(args.ghidra_home.resolve().rglob('*.jar'))
+    jars = sorted(args.dexlib_libs.resolve().rglob('*.jar'))
     if not any('dexlib' in p.name for p in jars):
-        raise RuntimeError('Ghidra classpath lacks dexlib2')
+        raise RuntimeError('DEX tooling classpath lacks dexlib2')
     classpath = os.pathsep.join(map(str, jars))
     environment = dict(os.environ, JAVA_HOME=str(args.java_home.resolve()))
     patch_paths = [ROOT / 'tools/build_configurable.py', ROOT / 'tools/VerifyConfigurableLauncher.java',

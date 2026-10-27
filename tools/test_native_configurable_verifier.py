@@ -22,7 +22,7 @@ def main():
                         help='Directory containing NAME-compiled.dex reconstructed outputs')
     parser.add_argument('--framework-dir', type=Path, required=True)
     parser.add_argument('--java-home', type=Path, required=True)
-    parser.add_argument('--ghidra-home', type=Path, required=True)
+    parser.add_argument('--dexlib-libs', type=Path, required=True)
     parser.add_argument('--out', type=Path)
     args = parser.parse_args()
     build = args.build_dir.resolve()
@@ -33,7 +33,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     classes = out / 'java-classes'
     classes.mkdir()
-    cp = os.pathsep.join(map(str, sorted(args.ghidra_home.resolve().rglob('*.jar'))))
+    cp = os.pathsep.join(map(str, sorted(args.dexlib_libs.resolve().rglob('*.jar'))))
     java = args.java_home.resolve() / 'bin/java'
     javac = args.java_home.resolve() / 'bin/javac'
     names = ('Launcher_WP3', 'HKMC_HomeSetting_WP')

@@ -60,14 +60,16 @@ toolchain paths and use a new, empty output directory for every build:
 BUILD_DIR=/private/path/configurable-home-build
 JAVA_HOME=/path/to/jdk-25
 ANDROID_SDK=/path/to/Android/Sdk
-GHIDRA_HOME=/path/to/ghidra_12.1.4_PUBLIC
+DEXLIB_LIBS="$ANDROID_SDK/cmdline-tools/latest/lib/external"
+#DEXLIB_LIBS=/path/to/ghidra_12.1.4_PUBLIC
+
 
 python3 tools/build_configurable.py \
   --backup-dir "$BACKUP_DIR" \
   --out "$BUILD_DIR" \
   --java-home "$JAVA_HOME" \
   --android-sdk "$ANDROID_SDK" \
-  --ghidra-home "$GHIDRA_HOME"
+  --dexlib-libs "$DEXLIB_LIBS"
 ```
 
 Compile using the connected target's API 19 `dexopt`. The tool pushes the two
@@ -81,7 +83,7 @@ python3 tools/compile_configurable.py \
   --backup-dir "$BACKUP_DIR" \
   --build-dir "$BUILD_DIR" \
   --java-home "$JAVA_HOME" \
-  --ghidra-home "$GHIDRA_HOME" \
+  --dexlib-libs "$DEXLIB_LIBS" \
   --nemesis \
   --busybox-device "$BUSYBOX_DEVICE" \
   --busybox-sha256 "$BUSYBOX_SHA256"

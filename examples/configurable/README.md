@@ -189,7 +189,7 @@ python3 tools/build_configurable.py \
   --out /path/to/fresh-empty-output-directory \
   --java-home /path/to/jdk-25 \
   --android-sdk /path/to/Android/Sdk \
-  --ghidra-home /path/to/ghidra_12.1.4_PUBLIC
+  --dexlib-libs /path/to/Android/Sdk/cmdline-tools/latest/lib/external
 ```
 
 Run this command from the project root. It reconstructs source DEX, builds the
@@ -220,7 +220,7 @@ GEN5W_ORIGINAL_BACKUP=/path/to/original-physical-backup
 GEN5W_BUILD_DIR=/path/to/fresh-build-output
 GEN5W_JAVA_HOME=/path/to/jdk-25
 GEN5W_ANDROID_SDK=/path/to/Android-Sdk
-GEN5W_GHIDRA_HOME=/path/to/ghidra_12.1.4_PUBLIC
+GEN5W_DEXLIB_LIBS="$GEN5W_ANDROID_SDK/cmdline-tools/latest/lib/external"
 GEN5W_SERIAL=ip:port
 GEN5W_BUSYBOX_DEVICE=/data/local/tmp/path/to/verified/busybox
 GEN5W_BUSYBOX_SHA256=sha256-of-that-busybox
@@ -230,14 +230,14 @@ python3 tools/build_configurable.py \
   --out "$GEN5W_BUILD_DIR" \
   --java-home "$GEN5W_JAVA_HOME" \
   --android-sdk "$GEN5W_ANDROID_SDK" \
-  --ghidra-home "$GEN5W_GHIDRA_HOME"
+  --dexlib-libs "$GEN5W_DEXLIB_LIBS"
 
 python3 tools/compile_configurable.py \
   --serial "$GEN5W_SERIAL" \
   --backup-dir "$GEN5W_ORIGINAL_BACKUP" \
   --build-dir "$GEN5W_BUILD_DIR" \
   --java-home "$GEN5W_JAVA_HOME" \
-  --ghidra-home "$GEN5W_GHIDRA_HOME" \
+  --dexlib-libs "$GEN5W_DEXLIB_LIBS" \
   --nemesis \
   --busybox-device "$GEN5W_BUSYBOX_DEVICE" \
   --busybox-sha256 "$GEN5W_BUSYBOX_SHA256"

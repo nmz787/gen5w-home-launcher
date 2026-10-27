@@ -35,7 +35,8 @@ def main():
     parser.add_argument('--build-dir', required=True, type=Path,
                         help='Fresh output from build_configurable.py')
     parser.add_argument('--java-home', required=True, type=Path)
-    parser.add_argument('--ghidra-home', required=True, type=Path)
+    parser.add_argument('--dexlib-libs', required=True, type=Path,
+                        help='Directory containing dexlib2/baksmali Java dependency JARs')
     parser.add_argument('--nemesis', action='store_true', required=True)
     parser.add_argument('--busybox-device', required=True)
     parser.add_argument('--busybox-sha256', required=True)
@@ -77,7 +78,7 @@ def main():
     verifier = ROOT / 'tools/verify_compiled_configurable.py'
     command = [sys.executable, str(verifier), '--backup-dir', str(backup_dir),
                '--build-dir', str(build_dir), '--java-home', str(args.java_home.resolve()),
-               '--ghidra-home', str(args.ghidra_home.resolve())]
+               '--dexlib-libs', str(args.dexlib_libs.resolve())]
     subprocess.run(command, check=True)
     record = {'target_serial': args.serial, 'source_serial': source_serial,
               'target_fingerprint': device.shell('getprop ro.build.fingerprint'),

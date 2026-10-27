@@ -18,7 +18,8 @@ physical backups, or prebuilt ODEXs. Supply an authorized, hash-verified
 capture from the exact target firmware. Also clone `gen5w-audio-shortcuts`
 adjacent to this repository; the ADB workflow imports its transport and
 artifact-cache modules. Host build requirements are Java 25, Android SDK API 19
-(build-tools 36.0.0), and Ghidra 12.1.4 for dexlib2/baksmali libraries.
+(build-tools 36.0.0), and the dexlib2/baksmali JARs bundled with Android SDK
+command-line tools (`cmdline-tools/latest/lib/external`).
 
 1. Run `tools/build_configurable.py` with the original launcher/editor backup.
    It emits DEX compiler carriers and verifies the bounded transformations.
